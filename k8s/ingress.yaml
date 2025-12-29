@@ -1,0 +1,47 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vhost-ingress
+  namespace: pinit
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.certresolver: le   # ACME 사용 시
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - auth.pinit.go-gradually.me
+        - api.pinit.go-gradually.me
+        - notification.pinit.go-gradually.me
+  rules:
+    - host: auth.pinit.go-gradually.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: auth-service
+                port:
+                  number: 80
+    - host: api.pinit.go-gradually.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: task-service
+                port:
+                  number: 80
+    - host: notification.pinit.go-gradually.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: notification-service
+                port:
+                  number: 80
