@@ -52,10 +52,6 @@ spec:
             - name: grpc
               containerPort: 9090
 
-          envFrom:
-            - secretRef:
-                name: pinit-gateway-secret
-
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness
