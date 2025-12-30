@@ -3,23 +3,6 @@ spring:
     gateway:
       server:
         webflux:
-          globalcors:
-            add-to-simple-url-handler-mapping: true
-            cors-configurations:
-              '[/**]':
-                allowed-origins:
-                  - "https://pinit.go-gradually.me"
-                allowed-methods:
-                  - GET
-                  - POST
-                  - PUT
-                  - PATCH
-                  - DELETE
-                  - OPTIONS
-                allowed-headers:
-                  - "*"
-                allow-credentials: true
-                max-age: 3600
           routes:
             - id: notification-service
               uri: http://notification-service
