@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: notification-service
+              uri: http://notification-service
+              predicates:
+                - Host=notification.pinit.go-gradually.me
+            - id: auth-service
+              uri: http://auth-service
+              predicates:
+                - Host=auth.pinit.go-gradually.me
+            - id: task-service
+              uri: http://task-service
+              predicates:
+                - Host=api.pinit.go-gradually.me
