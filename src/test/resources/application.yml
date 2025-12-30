@@ -1,0 +1,19 @@
+path:
+  key:
+    jwt:
+      public: src/test/resources/jwt-public-key.pem
+
+cors:
+  allowed-origins:
+    - "*"
+  allowed-methods:
+    - GET
+    - POST
+    - PUT
+    - PATCH
+    - DELETE
+    - OPTIONS
+  allowed-headers:
+    - "*"
+  allow-credentials: true
+  max-age: 3600

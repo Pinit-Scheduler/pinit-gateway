@@ -7,15 +7,26 @@ spring:
             - id: notification-service
               uri: http://localhost:8082
               predicates:
-                - Host=http://localhost:8082
+                - Host=localhost:8082
+              filters:
+                - JwtSubToMemberIdHeader
             - id: auth-service
               uri: http://localhost:8081
               predicates:
                 - Host=localhost:8081
+              filters:
+                - JwtSubToMemberIdHeader
             - id: task-service
               uri: http://localhost:8080
               predicates:
                 - Host=localhost:8080
+              filters:
+                - JwtSubToMemberIdHeader
 
 server:
   port: 8060
+
+path:
+  key:
+    jwt:
+      public: ${HOME}/pinit/keys/jwt-public-key.pem

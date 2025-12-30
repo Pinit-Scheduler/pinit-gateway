@@ -22,7 +22,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: auth-service
+                name: gateway-service
                 port:
                   number: 80
     - host: api.pinit.go-gradually.me
@@ -32,7 +32,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: task-service
+                name: gateway-service
                 port:
                   number: 80
     - host: notification.pinit.go-gradually.me
@@ -42,6 +42,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: notification-service
+                name: gateway-service
                 port:
                   number: 80

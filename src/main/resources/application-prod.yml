@@ -8,11 +8,38 @@ spring:
               uri: http://notification-service
               predicates:
                 - Host=notification.pinit.go-gradually.me
+              filters:
+                - JwtSubToMemberIdHeader
             - id: auth-service
               uri: http://auth-service
               predicates:
                 - Host=auth.pinit.go-gradually.me
+              filters:
+                - JwtSubToMemberIdHeader
             - id: task-service
               uri: http://task-service
               predicates:
                 - Host=api.pinit.go-gradually.me
+              filters:
+                - JwtSubToMemberIdHeader
+
+path:
+  key:
+    jwt:
+      public: /etc/keys/jwt-public-key.pem
+
+
+cors:
+  allowed-origins:
+    - "https://pinit.go-gradually.me"
+  allowed-methods:
+    - GET
+    - POST
+    - PUT
+    - PATCH
+    - DELETE
+    - OPTIONS
+  allowed-headers:
+    - "*"
+  allow-credentials: true
+  max-age: 3600
