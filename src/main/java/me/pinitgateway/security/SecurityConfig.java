@@ -46,7 +46,7 @@ public class SecurityConfig {
                                                           JwtAuthenticationFilter jwtAuthenticationFilter) {
         return applyCommon(http)
                 .authorizeExchange(auth -> auth
-                        .pathMatchers("/actuator/health/liveness", "/actuator/health/readiness", "/v3/**", "/swagger-ui/**", "/async-api/**").permitAll()
+                        .pathMatchers("/actuator/prometheus", "/actuator/health/liveness", "/actuator/health/readiness", "/v3/**", "/swagger-ui/**", "/async-api/**").permitAll()
                         .anyExchange().authenticated()
                 )
                 .addFilterAt(jwtAuthenticationFilter, SecurityWebFiltersOrder.AUTHENTICATION)
