@@ -117,6 +117,10 @@ public class SecurityConfig {
 
     private ServerWebExchangeMatcher authPathMatcher() {
         return ServerWebExchangeMatchers.pathMatchers(
+                "/*/login",
+                "/*/signup",
+                "/*/refresh",
+                "/*/login/**",
                 "/login",
                 "/signup",
                 "/refresh",
