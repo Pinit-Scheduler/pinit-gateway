@@ -22,6 +22,15 @@ spring:
                 - Host=localhost:8080
               filters:
                 - JwtSubToMemberIdHeader
+          metrics:
+            enabled: true
+management:
+  server:
+    port: 9096
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics,prometheus"
 
 server:
   port: 8060
