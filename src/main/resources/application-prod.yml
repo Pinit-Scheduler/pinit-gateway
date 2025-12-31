@@ -22,6 +22,16 @@ spring:
                 - Host=api.pinit.go-gradually.me
               filters:
                 - JwtSubToMemberIdHeader
+          metrics:
+            enabled: true
+management:
+  server:
+    port: 9095
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics,prometheus"
+
 
 path:
   key:
