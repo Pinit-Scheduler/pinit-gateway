@@ -25,6 +25,8 @@ spring:
           metrics:
             enabled: true
 management:
+  server:
+    port: 9095
   endpoints:
     web:
       exposure:
